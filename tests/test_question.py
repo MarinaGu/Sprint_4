@@ -1,11 +1,14 @@
+import allure
 from pages.form_order_page import FormOrderPage
 from pages.start_page import StartPage
 
+@allure.story("tests")
+@allure.feature('test question')
 def test_questions(browser):
     start_page = StartPage(browser)
     start_page.go_to_site()
     start_page.click_cookie_button()
-    #start_page.scroll_into_view_FAQ_elements()
+    start_page.scroll_into_view_FAQ_elements()
 
     how_many_text = start_page.how_many_rent()
     assert 'Сутки' and 'рублей' in how_many_text

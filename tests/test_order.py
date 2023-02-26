@@ -1,11 +1,11 @@
-#import allure
+import allure
 from pages.ya_page import MainPage
 from pages.form_order_page import FormOrderPage
 from pages.start_page import StartPage
 
 
-#@allure.story("tests")
-#@allure.feature('test order')
+@allure.story("tests")
+@allure.feature('test order')
 def test_order_up_button(browser):
     start_page = StartPage(browser)
     form_order = FormOrderPage(browser)

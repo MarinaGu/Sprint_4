@@ -13,7 +13,6 @@ class StartPageLocators:
 
     #локаторы для проверка вопросов о важном
     LOCATOR_ACCORDION = (By.CLASS_NAME, "accordion")
-    #LOCATOR_QU_HOW_MANY_RENT = (By.ID, "accordion__heading-16")
     LOCATOR_QU_HOW_MANY_RENT = (By.XPATH, ".//div[@id='accordion__heading-0']")
     LOCATOR_QU_MORE_SCOOTER = (By.XPATH, ".//div[@id='accordion__heading-1']")
     LOCATOR_QU_TIME_RENT = (By.XPATH, ".//div[@id='accordion__heading-2']")
@@ -36,6 +35,10 @@ class StartPageLocators:
 
 class StartPage(BasePage):
 
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.LOCATOR_ACCORDION = (By.CLASS_NAME, "accordion")
+
     def click_cookie_button(self):
         return self.find_element(StartPageLocators.LOCATOR_COOKIE_BUTTON).click()
 
@@ -45,9 +48,9 @@ class StartPage(BasePage):
     def click_order_down_button(self):
         return self.find_element(StartPageLocators.LOCATOR_ORDER_DOWN_BUTTON).click()
 
-    # def scroll_into_view_FAQ_elements(self):
-    #     accordion_elements = self.driver.find_element(*self.LOCATOR_ACCORDION)
-    #     self.driver.execute_script("arguments[0].scrollIntoView();", accordion_elements)
+    def scroll_into_view_FAQ_elements(self):
+        accordion_elements = self.driver.find_element(*self.LOCATOR_ACCORDION)
+        self.driver.execute_script("arguments[0].scrollIntoView();", accordion_elements)
 
 
     def check_start_page(self):
@@ -92,17 +95,3 @@ class StartPage(BasePage):
         where_delivery = self.find_element(StartPageLocators.LOCATOR_QU_WHERE_DELIVERY)
         where_delivery.click()
         return self.find_element(StartPageLocators.LOCATOR_ANS_WHERE_DELIVERY).text
-
-
-
-
-
-
-
-
-
-
-
-
-
-
