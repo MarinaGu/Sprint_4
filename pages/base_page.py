@@ -4,6 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage:
     def __init__(self, driver):
+        #self.LOCATOR_ACCORDION_ELEMENTS = locator
         self.driver = driver
         self.base_url = 'https://qa-scooter.praktikum-services.ru/'
 
@@ -17,3 +18,4 @@ class BasePage:
     def find_elements(self, locator, time=10):
         return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator),
                                                       message=f"Not find {locator}")
+
